@@ -1,18 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-// We first import some OpenZeppelin Contracts.
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-
 import {StringUtils} from "./libraries/stringutils.sol";
-// We import another help function
 import {Base64} from "./libraries/base64.sol";
 
 import "hardhat/console.sol";
 
-// We inherit the contract we imported. This means we'll have access
-// to the inherited contract's methods.
+
 contract Domains is ERC721URIStorage {
   // Magic given to us by OpenZeppelin to help us keep track of tokenIds.
   using Counters for Counters.Counter;
@@ -112,7 +108,7 @@ contract Domains is ERC721URIStorage {
   }
 
   function setRecord(string calldata name, string calldata record) public {
-      // Check that the owner is the transaction sender
+      
       if (msg.sender != domains[name]) revert Unauthorized();
          records[name] = record;
   }
